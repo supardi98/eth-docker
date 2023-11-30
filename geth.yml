@@ -49,6 +49,8 @@ services:
       - 0.0.0.0
       - --http.vhosts=*
       - --http.corsdomain=*
+      - --http.api
+      - web3,eth,net,miner
       - --datadir
       - /var/lib/goethereum
       - --port
@@ -75,6 +77,11 @@ services:
       - --authrpc.vhosts=*
       - --maxpeers
       - ${EL_MAX_PEER_COUNT:-50}
+      - --pprof.addr
+      - 0.0.0.0
+      - --mine
+      - --miner.etherbase
+      - "0x74A732e5751087EAAa98b35B08820748958CF96A"
     labels:
       - metrics.scrape=true
       - metrics.path=/debug/metrics/prometheus
